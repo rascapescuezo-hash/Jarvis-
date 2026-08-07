@@ -1,0 +1,28 @@
+{
+  "appId": "com.jarvis.asistente",
+  "appName": "Jarvis",
+  "webDir": "www",
+  "bundledWebRuntime": false,
+  "server": {
+    "androidScheme": "https"
+  },
+  "plugins": {
+    "SpeechRecognition": {
+      "androidPermissions": ["RECORD_AUDIO"],
+      "androidContinuousListening": true,
+      "language": "es-ES"
+    },
+    "TextToSpeech": {
+      "androidLanguage": "es-ES"
+    },
+    "Permissions": {
+      "androidPermissions": [
+        "RECORD_AUDIO",
+        "MODIFY_AUDIO_SETTINGS",
+        "SYSTEM_ALERT_WINDOW",
+        "FOREGROUND_SERVICE",
+        "WAKE_LOCK"
+      ]
+    }
+  }
+}
