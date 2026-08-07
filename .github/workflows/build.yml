@@ -14,9 +14,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Configurar SDK de Android (¡El paso que faltaba!)
+      - name: Configurar SDK de Android
         uses: android-actions/setup-android@v3
-      - name: Instalar dependencias
+      - name: Instalar dependencias del proyecto
         run: npm install
       - name: Crear la plataforma Android
         run: npx cap add android
