@@ -5,24 +5,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Setup Java 17
+      - name: Instalar Java 17
         uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
-      - name: Setup Node.js
+      - name: Instalar Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Instalar dependencias
+      - name: Instalar dependencias del proyecto
         run: npm install
-      - name: Sincronizar Capacitor
+      - name: Agregar la plataforma Android
+        run: npx cap add android
+      - name: Crear archivo de configuración del SDK (¡Fallo solucionado!)
+        run: echo "sdk.dir=${{ runner.tool_cache }}/android-sdk" > android/local.properties
+      - name: Sincronizar Capacitor con Android
         run: npx cap sync android
-      - name: Dar permisos para compilar
+      - name: Dar permisos de ejecución a Gradle
         run: chmod +x android/gradlew
-      - name: Compilar la APK
+      - name: Compilar la APK definitiva
         run: cd android && ./gradlew assembleDebug
-      - name: Subir el archivo APK
+      - name: Subir el archivo para descargar
         uses: actions/upload-artifact@v4
         with:
           name: jarvis-apk
