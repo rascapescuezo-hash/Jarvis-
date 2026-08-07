@@ -1,0 +1,29 @@
+{
+  "name": "jarvis-android",
+  "version": "9.0.0",
+  "description": "Asistente de voz Jarvis para Android",
+  "main": "index.html",
+  "scripts": {
+    "build": "echo 'No build needed'",
+    "sync": "npx cap sync android",
+    "open": "npx cap open android",
+    "build-apk": "cd android && ./gradlew assembleDebug",
+    "build-release": "cd android && ./gradlew assembleRelease"
+  },
+  "dependencies": {
+    "@capacitor/android": "^5.7.0",
+    "@capacitor/core": "^5.7.0",
+    "@capacitor/status-bar": "^5.0.0",
+    "@capacitor/splash-screen": "^5.0.0",
+    "@capacitor-community/speech-recognition": "^5.0.0",
+    "@capacitor-community/text-to-speech": "^5.0.0",
+    "@capacitor/device": "^5.0.0",
+    "@capacitor/geolocation": "^5.0.0",
+    "@capacitor/contacts": "^5.0.0",
+    "@capacitor/phone-call": "^5.0.0",
+    "@capacitor/sms": "^5.0.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^5.7.0"
+  }
+}
