@@ -14,19 +14,21 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Instalar dependencias del proyecto
+      - name: Configurar SDK de Android (¡El paso que faltaba!)
+        uses: android-actions/setup-android@v3
+      - name: Instalar dependencias
         run: npm install
-      - name: Agregar la plataforma Android
+      - name: Crear la plataforma Android
         run: npx cap add android
-      - name: Crear archivo de configuración del SDK (¡Fallo solucionado!)
-        run: echo "sdk.dir=${{ runner.tool_cache }}/android-sdk" > android/local.properties
-      - name: Sincronizar Capacitor con Android
+      - name: Configurar ruta del SDK
+        run: echo "sdk.dir=$ANDROID_HOME" > android/local.properties
+      - name: Sincronizar Capacitor
         run: npx cap sync android
-      - name: Dar permisos de ejecución a Gradle
+      - name: Dar permisos a Gradle
         run: chmod +x android/gradlew
-      - name: Compilar la APK definitiva
+      - name: Compilar la APK
         run: cd android && ./gradlew assembleDebug
-      - name: Subir el archivo para descargar
+      - name: Subir el archivo APK
         uses: actions/upload-artifact@v4
         with:
           name: jarvis-apk
