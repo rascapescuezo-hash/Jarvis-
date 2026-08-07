@@ -14,15 +14,15 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - name: Install dependencies
+      - name: Instalar dependencias
         run: npm install
-      - name: Add Android platform
-        run: npx cap add android
-      - name: Sync Capacitor
-        run: npx cap sync
-      - name: Build APK
-        run: npx cap build android --no-sync
-      - name: Upload APK
+      - name: Sincronizar Capacitor
+        run: npx cap sync android
+      - name: Dar permisos para compilar
+        run: chmod +x android/gradlew
+      - name: Compilar la APK
+        run: cd android && ./gradlew assembleDebug
+      - name: Subir el archivo APK
         uses: actions/upload-artifact@v4
         with:
           name: jarvis-apk
