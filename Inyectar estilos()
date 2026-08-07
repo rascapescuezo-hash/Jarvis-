@@ -1,0 +1,100 @@
+/* ===== ESTILOS DE JARVIS ===== */
+@keyframes jarvisPulso {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(46,204,113,0.55); }
+    50% { box-shadow: 0 0 0 6px rgba(46,204,113,0); }
+}
+@keyframes jarvisAparecer {
+    from { opacity: 0; transform: scale(0.75); }
+    to { opacity: 1; transform: scale(1); }
+}
+@keyframes jarvisRespirar {
+    0%, 100% { transform: scale(1); opacity: 0.92; }
+    50% { transform: scale(1.08); opacity: 1; }
+}
+#jarvis-punto.jarvis-escuchando { animation: jarvisPulso 1.6s ease-out infinite; }
+#jarvis-boton {
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.25s ease;
+    animation: jarvisAparecer 0.25s ease;
+}
+#jarvis-boton.jarvis-arrastrando {
+    transform: scale(1.18);
+    box-shadow: 0 8px 22px rgba(0,0,0,0.45);
+}
+#jarvis-estrella { animation: jarvisRespirar 2.6s ease-in-out infinite; transform-origin: center; }
+#jarvis-pill {
+    opacity: 0;
+    transform: translateY(8px) scale(0.94);
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+#jarvis-pill.jarvis-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+#jarvis-menu-fondo {
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+#jarvis-menu-fondo.jarvis-visible { opacity: 1; }
+#jarvis-menu-panel {
+    transform: translateY(18px) scale(0.94);
+    opacity: 0;
+    transition: transform 0.22s cubic-bezier(0.34,1.56,0.64,1), opacity 0.2s ease;
+}
+#jarvis-menu-fondo.jarvis-visible #jarvis-menu-panel {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
+@keyframes jarvisFilaAparecer {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+#jarvis-menu-panel > * {
+    animation: jarvisFilaAparecer 0.32s ease both;
+}
+#jarvis-menu-panel > *:nth-child(1) { animation-delay: 0.02s; }
+#jarvis-menu-panel > *:nth-child(2) { animation-delay: 0.06s; }
+#jarvis-menu-panel > *:nth-child(3) { animation-delay: 0.10s; }
+#jarvis-menu-panel > *:nth-child(4) { animation-delay: 0.14s; }
+#jarvis-menu-panel > *:nth-child(5) { animation-delay: 0.18s; }
+#jarvis-menu-panel > *:nth-child(6) { animation-delay: 0.22s; }
+#jarvis-menu-panel > *:nth-child(7) { animation-delay: 0.26s; }
+#jarvis-menu-panel > *:nth-child(8) { animation-delay: 0.30s; }
+#jarvis-menu-panel > *:nth-child(9) { animation-delay: 0.34s; }
+.jarvis-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 5px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #a685ff, #3a3a3c);
+    outline: none;
+}
+.jarvis-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px; height: 18px; border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(166,133,255,0.55);
+    cursor: pointer;
+}
+.jarvis-preset {
+    display: inline-block; padding: 6px 12px; margin: 0 6px 6px 0;
+    border-radius: 999px; background: #2c2c2e; color: #fff;
+    font-size: 12px; border: 1px solid #444; cursor: pointer;
+    transition: background 0.15s ease, transform 0.1s ease;
+}
+.jarvis-preset:active { transform: scale(0.94); background: #3a3a3c; }
+
+/* Estilos para la burbuja flotante (overlay) */
+#jarvis-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 999999;
+}
+#jarvis-overlay.active {
+    pointer-events: auto;
+    background: rgba(0,0,0,0.3);
+}
